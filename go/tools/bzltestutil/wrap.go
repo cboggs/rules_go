@@ -136,6 +136,7 @@ func Wrap(pkg string) error {
 	cmd.Stderr = io.MultiWriter(os.Stderr, streamMerger.ErrW)
 	cmd.Stdout = io.MultiWriter(os.Stdout, streamMerger.OutW)
 	log.Fatalf("ARGS:", cmd)
+	os.Exit(1)
 	streamMerger.Start()
 	err := cmd.Run()
 	streamMerger.ErrW.Close()
